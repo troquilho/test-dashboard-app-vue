@@ -25,3 +25,5 @@ jobs:
         key: ${{secrets.SSH_PRIVATE_KEY}}
         script: |
           npm -v
+          git clone git@github.com:troquilho/test-dashboard-app-vue.git
+          cd test-dashboard-app-vue
