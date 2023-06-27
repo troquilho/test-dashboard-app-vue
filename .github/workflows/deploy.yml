@@ -25,7 +25,7 @@ jobs:
         key: ${{secrets.SSH_PRIVATE_KEY}}
         script: |
           sudo service nginx start
-          git clone git@github.com:troquilho/test-dashboard-api.git
+          git clone git@github.com:troquilho/test-dashboard-app-vue.git
           cd test-dashboard-app-vue
           npm install
           npm run build
