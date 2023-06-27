@@ -17,6 +17,12 @@ jobs:
       with:
         node-version: '14'
 
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Build Application
+      run: npm run build
+
     - name: Deploy to DigitalOcean
       uses: appleboy/ssh-action@master
       with:
@@ -24,6 +30,8 @@ jobs:
         username: ${{secrets.DIGITALOCEAN_USERNAME}}
         key: ${{secrets.SSH_PRIVATE_KEY}}
         script: |
-          npm -v
-          git clone git@github.com:troquilho/test-dashboard-app-vue.git
+          sudo service nginx start
           cd test-dashboard-app-vue
+          rm -rf /var/www/html/*
+          cp -R dist/* /var/www/html
+          sudo service nginx restart
