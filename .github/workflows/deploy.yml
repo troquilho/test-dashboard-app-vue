@@ -27,6 +27,7 @@ jobs:
           sudo service nginx start
           git clone git@github.com:troquilho/test-dashboard-app-vue.git
           cd test-dashboard-app-vue
+          git pull
           npm install
           npm run build
           rm -rf /var/www/html/*
